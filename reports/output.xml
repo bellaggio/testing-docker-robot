@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20210309 23:09:02.027" generator="Robot 3.2.2 (Python 2.7.17 on linux2)">
+<suite source="/usr/src/app/suites/login.robot" id="s1" name="Login">
+<kw type="setup" name="Start Session">
+<msg timestamp="20210309 23:09:02.041" level="FAIL">No keyword with name 'Start Session' found.</msg>
+<status status="FAIL" endtime="20210309 23:09:02.041" starttime="20210309 23:09:02.041"></status>
+</kw>
+<test id="s1-t1" name="Successful login">
+<status status="FAIL" endtime="20210309 23:09:02.042" critical="yes" starttime="20210309 23:09:02.041">Parent suite setup failed:
+No keyword with name 'Start Session' found.</status>
+</test>
+<kw type="teardown" name="Finish Session">
+<msg timestamp="20210309 23:09:02.043" level="FAIL">No keyword with name 'Finish Session' found.</msg>
+<status status="FAIL" endtime="20210309 23:09:02.043" starttime="20210309 23:09:02.043">No keyword with name 'Finish Session' found.</status>
+</kw>
+<doc>Tests for the Login feature</doc>
+<status status="FAIL" endtime="20210309 23:09:02.043" starttime="20210309 23:09:02.028">Suite setup failed:
+No keyword with name 'Start Session' found.
+
+Also suite teardown failed:
+No keyword with name 'Finish Session' found.</status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="0">Critical Tests</stat>
+<stat fail="1" pass="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Login" pass="0">Login</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20210309 23:09:02.039" level="ERROR">Error in file '/usr/src/app/suites/login.robot' on line 4: Resource file '../resources/base.robot' does not exist.</msg>
+</errors>
+</robot>

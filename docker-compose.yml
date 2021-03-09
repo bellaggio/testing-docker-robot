@@ -1,0 +1,17 @@
+# docker-compose.sql.yml
+#
+
+version: '3'
+services:
+  robot:
+    container_name: robot
+    build:
+      context: ./docker/robot
+    volumes: [
+        "./output:/usr/src/app/output",
+        "./suites:/usr/src/app/suites",
+        "./reports:/usr/src/app/reports"
+    ]
+    command: robot -d ./reports /usr/src/app/suites/login.robot
+
+
