@@ -7,9 +7,11 @@ services:
     container_name: robot
     build:
       context: ./docker/robot
+    shm_size: "256M"
     volumes: [
         "./output:/usr/src/app/output",
         "./suites:/usr/src/app/suites",
+        "./resources:/usr/src/app/resources",
         "./reports:/usr/src/app/reports"
     ]
     command: robot -d ./reports /usr/src/app/suites/login.robot

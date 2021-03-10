@@ -1,37 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot rpa="false" generated="20210309 23:09:02.027" generator="Robot 3.2.2 (Python 2.7.17 on linux2)">
+<robot rpa="false" generated="20210310 01:48:06.835" generator="Robot 3.1.1 (Python 2.7.17 on linux2)">
 <suite source="/usr/src/app/suites/login.robot" id="s1" name="Login">
-<kw type="setup" name="Start Session">
-<msg timestamp="20210309 23:09:02.041" level="FAIL">No keyword with name 'Start Session' found.</msg>
-<status status="FAIL" endtime="20210309 23:09:02.041" starttime="20210309 23:09:02.041"></status>
+<kw type="setup" name="Start Session" library="hooks">
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+</arguments>
+<assign>
+<var>${chrome_options}</var>
+</assign>
+<msg timestamp="20210310 01:48:07.115" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f6b1f3f0890&gt;</msg>
+<status status="PASS" endtime="20210310 01:48:07.115" starttime="20210310 01:48:07.115"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-extensions</arg>
+</arguments>
+<status status="PASS" endtime="20210310 01:48:07.115" starttime="20210310 01:48:07.115"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+</arguments>
+<status status="PASS" endtime="20210310 01:48:07.115" starttime="20210310 01:48:07.115"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-gpu</arg>
+</arguments>
+<status status="PASS" endtime="20210310 01:48:07.115" starttime="20210310 01:48:07.115"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>--no-sandbox</arg>
+</arguments>
+<status status="PASS" endtime="20210310 01:48:07.116" starttime="20210310 01:48:07.116"></status>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${chrome_options}</arg>
+</arguments>
+<msg timestamp="20210310 01:48:07.116" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" endtime="20210310 01:48:08.305" starttime="20210310 01:48:07.116"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:08.305" starttime="20210310 01:48:07.114"></status>
 </kw>
 <test id="s1-t1" name="Successful login">
-<status status="FAIL" endtime="20210309 23:09:02.042" critical="yes" starttime="20210309 23:09:02.041">Parent suite setup failed:
-No keyword with name 'Start Session' found.</status>
+<kw name="Given I am at the login page" library="kws">
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the active browser instance to the provided ``url``.</doc>
+<arguments>
+<arg>http://training-wheels-protocol.herokuapp.com/login</arg>
+</arguments>
+<msg timestamp="20210310 01:48:08.306" level="INFO">Opening url 'http://training-wheels-protocol.herokuapp.com/login'</msg>
+<status status="PASS" endtime="20210310 01:48:09.863" starttime="20210310 01:48:08.306"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:09.864" starttime="20210310 01:48:08.306"></status>
+</kw>
+<kw name="When I fill in my credentials" library="kws">
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:userId</arg>
+<arg>stark</arg>
+</arguments>
+<msg timestamp="20210310 01:48:09.864" level="INFO">Typing text 'stark' into text field 'id:userId'.</msg>
+<status status="PASS" endtime="20210310 01:48:09.916" starttime="20210310 01:48:09.864"></status>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into text field identified by ``locator``.</doc>
+<arguments>
+<arg>id:passId</arg>
+<arg>jarvis!</arg>
+</arguments>
+<msg timestamp="20210310 01:48:09.916" level="INFO">Typing text 'jarvis!' into text field 'id:passId'.</msg>
+<status status="PASS" endtime="20210310 01:48:09.967" starttime="20210310 01:48:09.916"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click element identified by ``locator``.</doc>
+<arguments>
+<arg>xpath://button[@type="submit" and i=" Login"]</arg>
+</arguments>
+<msg timestamp="20210310 01:48:09.967" level="INFO">Clicking element 'xpath://button[@type="submit" and i=" Login"]'.</msg>
+<status status="PASS" endtime="20210310 01:48:10.371" starttime="20210310 01:48:09.967"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:10.371" starttime="20210310 01:48:09.864"></status>
+</kw>
+<kw name="Then I should see the success flash message" library="kws">
+<arguments>
+<arg>Olá, Tony Stark. Você acessou a área logada!</arg>
+</arguments>
+<kw name="Wait Until Element Contains" library="SeleniumLibrary">
+<doc>Waits until element ``locator`` contains ``text``.</doc>
+<arguments>
+<arg>xpath://div[@id="flash" and @class="flash success"]</arg>
+<arg>${flash_message}</arg>
+</arguments>
+<status status="PASS" endtime="20210310 01:48:10.388" starttime="20210310 01:48:10.371"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20210310 01:48:13.388" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" endtime="20210310 01:48:13.388" starttime="20210310 01:48:10.388"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:13.388" starttime="20210310 01:48:10.371"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:13.389" critical="yes" starttime="20210310 01:48:08.305"></status>
 </test>
-<kw type="teardown" name="Finish Session">
-<msg timestamp="20210309 23:09:02.043" level="FAIL">No keyword with name 'Finish Session' found.</msg>
-<status status="FAIL" endtime="20210309 23:09:02.043" starttime="20210309 23:09:02.043">No keyword with name 'Finish Session' found.</status>
+<kw type="teardown" name="Finish Session" library="hooks">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" endtime="20210310 01:48:13.444" starttime="20210310 01:48:13.389"></status>
+</kw>
+<status status="PASS" endtime="20210310 01:48:13.444" starttime="20210310 01:48:13.389"></status>
 </kw>
 <doc>Tests for the Login feature</doc>
-<status status="FAIL" endtime="20210309 23:09:02.043" starttime="20210309 23:09:02.028">Suite setup failed:
-No keyword with name 'Start Session' found.
-
-Also suite teardown failed:
-No keyword with name 'Finish Session' found.</status>
+<status status="PASS" endtime="20210310 01:48:13.444" starttime="20210310 01:48:06.836"></status>
 </suite>
 <statistics>
 <total>
-<stat fail="1" pass="0">Critical Tests</stat>
-<stat fail="1" pass="0">All Tests</stat>
+<stat fail="0" pass="1">Critical Tests</stat>
+<stat fail="0" pass="1">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat fail="1" id="s1" name="Login" pass="0">Login</stat>
+<stat fail="0" id="s1" name="Login" pass="1">Login</stat>
 </suite>
 </statistics>
 <errors>
-<msg timestamp="20210309 23:09:02.039" level="ERROR">Error in file '/usr/src/app/suites/login.robot' on line 4: Resource file '../resources/base.robot' does not exist.</msg>
 </errors>
 </robot>
